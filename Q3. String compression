@@ -1,0 +1,35 @@
+Sample test case:
+Input: aabbbbccccsss
+Output: a2b4c4s3
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+
+public class compress{
+    public static String compressString(String str){
+        String comstr = "";
+        int n = str.length();
+        
+        for(int i=0; i<n; i++){
+            char curr = str.charAt(i);
+            int count = 1;
+            while(i + 1 < n && str.charAt(i + 1)==curr){
+                count++;
+                i++;
+            }
+            comstr += curr;
+            if(count>1){
+                comstr += count;
+            }
+        }
+        return comstr;
+    }
+    
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String output =  compressString(str);
+        System.out.println(output);
+    }
+}
